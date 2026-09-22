@@ -16,7 +16,7 @@ The plugin stores the current day at
 ### Via Omarchy CLI (Git)
 
 ```bash
-omarchy plugin add https://github.com/<your-username>/omarchy-kinetics.git --enable
+omarchy plugin add https://github.com/RubarMo/omarchy-kinetics.git --enable
 ```
 
 ### Manual Installation
@@ -29,3 +29,17 @@ omarchy plugin enable rubar.kinetics
 ```
 
 The widget's manifest requests the right side of the top bar by default.
+
+## Removal
+
+To disable and uninstall the plugin:
+
+```bash
+omarchy plugin disable rubar.kinetics
+omarchy plugin remove rubar.kinetics
+```
+
+## Dependencies & License
+
+- **Dependencies**: None (pure QML/JS utilizing built-in Omarchy shell APIs).
+- **License**: [MIT](LICENSE)
