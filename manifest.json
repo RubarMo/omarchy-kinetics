@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "rubar.kinetics",
+  "name": "Kinetics",
+  "version": "1.0.0",
+  "author": "rubar",
+  "license": "MIT",
+  "description": "A sit, stand, and move timer for the Omarchy top bar.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Kinetics",
+    "description": "Start a day, run sit/stand/move sessions, and see daily posture totals.",
+    "category": "Health",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "sittingMinutes": 20,
+      "standingMinutes": 8,
+      "movingMinutes": 2,
+      "rounds": 3
+    },
+    "schema": [
+      { "key": "sittingMinutes", "type": "integer", "label": "Sitting (minutes)", "min": 1, "max": 120, "step": 1, "defaultValue": 20 },
+      { "key": "standingMinutes", "type": "integer", "label": "Standing (minutes)", "min": 1, "max": 120, "step": 1, "defaultValue": 8 },
+      { "key": "movingMinutes", "type": "integer", "label": "Moving (minutes)", "min": 1, "max": 120, "step": 1, "defaultValue": 2 },
+      { "key": "rounds", "type": "integer", "label": "Rounds per session", "min": 1, "max": 12, "step": 1, "defaultValue": 3 }
+    ]
+  }
+}
