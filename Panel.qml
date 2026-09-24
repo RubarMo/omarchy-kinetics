@@ -167,7 +167,9 @@ Item {
       root.omarchyPath + "/bin/omarchy-notification-send",
       // Keep each reminder transient so successive posture changes do not
       // stack below the visible notification area.
-      "--app-name", "Kinetics", "-g", "󰔛", "-u", "normal", "-t", "8000", summary, body
+      // No -g glyph flag: Nerd Font pictograms render as tofu on stock
+      // installs, and the app name + summary already identify the source.
+      "--app-name", "Kinetics", "-u", "normal", "-t", "8000", summary, body
     ]
     console.log("kinetics: sending notification", summary)
     showReminder(summary, body)
@@ -175,7 +177,8 @@ Item {
     Quickshell.execDetached([
       "omarchy-shell", "osd", "show",
       JSON.stringify({
-        icon: "󰔛",
+        // No icon key: the OSD renders its icon column in a large glyph
+        // font, so short text badges belong in the message instead.
         message: summary + "\n" + body,
         duration: 8000
       })
@@ -392,12 +395,19 @@ Item {
         detail: root.sessionActive ? ("Round " + root.round + " / " + root.sessionPlan.rounds) : ""
         foreground: root.foreground
         iconComponent: Component {
+          // Text badge instead of a Nerd Font glyph: guaranteed to render
+          // with the stock UI font, and matches the SIT/STAND/MOVE wording
+          // used in the bar widget.
           Text {
-            text: root.sessionActive && root.phase === "standing" ? "󰚀"
-              : (root.sessionActive && root.phase === "moving" ? "󰖴" : "󰔛")
+            textFormat: Text.PlainText
+            text: root.sessionActive && root.phase === "standing" ? "STAND"
+              : (root.sessionActive && root.phase === "moving" ? "MOVE"
+                : (root.sessionActive ? "SIT" : "KINETICS"))
             color: root.sessionActive ? root.accent : root.foreground
             font.family: Style.font.family
-            font.pixelSize: Style.font.display
+            font.pixelSize: Style.font.title
+            font.bold: true
+            font.letterSpacing: 1.0
           }
         }
       }

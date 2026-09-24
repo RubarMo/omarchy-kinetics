@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "rubar.kinetics",
   "name": "Kinetics",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "rubar",
   "license": "MIT",
   "description": "A sit, stand, and move timer for the Omarchy top bar.",

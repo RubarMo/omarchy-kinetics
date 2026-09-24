@@ -1,5 +1,7 @@
 # Kinetics
 
+![Kinetics active session](preview.png)
+
 An Omarchy top-bar plugin for cycling through sitting, standing, and moving.
 
 Defaults are 20 minutes sitting, 8 minutes standing, 2 minutes moving, and
